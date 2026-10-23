@@ -41,6 +41,8 @@ BD_CSS2 = '''<style id="bd2">
 .bdorg div{border-top:2px solid var(--heading);padding-top:10px}
 .bdorg .mono{display:block;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--pai-coral-text);margin-bottom:6px}
 .bdorg ul{margin:0;padding:0;list-style:none;font-size:14px;line-height:1.6;color:var(--ink)}
+.bdchron p b{color:var(--heading)}
+.bdchron p.fl{margin-top:8px;padding-top:8px;border-top:1px dashed var(--pai-line);font-size:13px;color:var(--heading)}
 .bdsources{margin:0;padding:0;list-style:none;font-size:13px;line-height:1.55;color:var(--ink);columns:2;column-gap:28px}
 .bdsources li{break-inside:avoid;margin-bottom:6px}
 .bdsources a{color:inherit}
@@ -67,7 +69,7 @@ def init_body(MAIN, STEPS, BD_CSS):
 <div class="copy">
 <span class="pai-chip" style="align-self:flex-start">Future direction &middot; not part of the first pilot</span>
 <h1>Six in ten referred women never reach colposcopy. The screening already found them.</h1>
-<p class="dek">Bangladesh&rsquo;s national programme screens millions of women and records every positive result. Then it loses most of them at the next step. The Prevention Adoption Initiative is a weekly routine for that step: find who is overdue, rank by urgency, act with a call and a booking and the fare, close when it is done. This page shows how it could run here, who would do what, and who would pay. Nothing on it has a partner, a date or funding.</p>
+<p class="dek">Bangladesh&rsquo;s national programme screens millions of women and records every positive result. Then it loses most of them at the next step. The Prevention Adoption Initiative is a weekly routine for that step: find who is overdue, rank by urgency, act with a call and a booking and the fare, close when it is done. This page shows how it could run here, first on cancer screening and then on the chronic conditions a corporate check-up finds, who would do what, and who would pay. Nothing on it has a partner, a date or funding.</p>
 <div class="pai-cta"><a class="btn pai-primary" href="https://calendly.com/shafaat-alic/30min">Talk to me, 30 minutes <span class="ar">&rarr;</span></a><a class="btn pai-secondary" href="assets/HSREP_Prevention_Adoption_Initiative_Brief_Bangladesh.pdf" download>The one-page brief (PDF) <span class="ar">&rarr;</span></a></div>
 </div>
 <div class="bdstat" aria-label="The gap in numbers">
@@ -120,15 +122,15 @@ def init_body(MAIN, STEPS, BD_CSS):
 </article>
 <article class="bdm">
 <div class="k"><span class="mono">B &middot; Alongside</span><span class="st fut">Future possibility</span></div>
-<h3>A completion contract inside one private network</h3>
-<p>A network runs the routine on its own abnormal results, where the next step is in-house: an abnormal mammogram or ultrasound, HbA1c, lipids, a cervical result.</p>
+<h3>A completion contract on corporate check-ups</h3>
+<p>A network already sells annual check-ups to employers. Every round produces high blood pressure readings, HbA1c over the line, abnormal creatinine. Then nothing happens. The routine follows each abnormal result to its next step inside the network.</p>
 <dl>
-<dt>The list</dt><dd>The network&rsquo;s own results with no next step recorded.</dd>
+<dt>The list</dt><dd>Abnormal results from the network&rsquo;s own corporate check-ups with no next step recorded. See the finish lines below.</dd>
 <dt>Who acts</dt><dd>Its outreach staff, paid for the list. No doctor is paid for the referral. One transparent price for the next step.</dd>
-<dt>The test</dt><dd>In-house.</dd>
-<dt>Who pays</dt><dd>The network. It is buying completion from patients it already acquired, and a product employers can buy.</dd>
+<dt>The test</dt><dd>In-house: a repeat reading, a confirmatory test, a doctor visit, the yearly eye and kidney tests.</dd>
+<dt>Who pays</dt><dd>The network, and the employer through the check-up contract. It is buying completion from people it already tested, and a product every employer can buy: completion, not a check-up.</dd>
 </dl>
-<div class="m"><span class="mono">Measure</span>Completion within the clinical window, by result type and by payer.</div>
+<div class="m"><span class="mono">Measure</span>Share of abnormal results that reached their next step within the window, per employer.</div>
 </article>
 <article class="bdm">
 <div class="k"><span class="mono">C &middot; At scale</span><span class="st fut">Future possibility</span></div>
@@ -144,6 +146,20 @@ def init_body(MAIN, STEPS, BD_CSS):
 </article>
 </div>
 <p class="pai-small" style="margin-top:14px">No stage starts in Bangladesh until the Michigan pilot has a number, and no stage starts until the one before it has a number.</p>
+</section>
+
+<section class="pai-card" id="chronic" aria-labelledby="chh">
+<span class="mono">03b &middot; Beyond cancer screening</span>
+<h2 id="chh">The same routine on a corporate check-up: three conditions, six finish lines.</h2>
+<p class="lede">Chronic disease is where the corporate check-up finds the most abnormal results and does the least about them. Each line below is a recommended step that people start and do not finish, with the size of the condition in Bangladesh and the finish line the pilot would count. Stress and lifestyle are real causes and bad finish lines: they belong in the Act step, never in the measure.</p>
+<ol class="gsteps bdsteps bdchron">
+<li><span class="mono">01 &middot; Hypertension &middot; first</span><p><b>21% of adults</b> have raised blood pressure; nationally about 14% of those with it are controlled, and the public programme that tracks every patient reaches 58%.</p><p class="fl">Finish lines: a repeat reading on another day and a doctor visit, within the month; a repeat reading at 90 days after treatment starts.</p></li>
+<li><span class="mono">02 &middot; Diabetes &middot; second</span><p><b>13% of adults</b>, about 13.9 million people, and 39% of them do not know. HbA1c is already in the check-up.</p><p class="fl">Finish lines: a second test to confirm, with a doctor visit, within the month; HbA1c at 90 days after treatment starts; for everyone already diagnosed, the eye exam and the urine-albumin and eGFR check, at least yearly.</p></li>
+<li><span class="mono">03 &middot; Kidney &middot; rides on the panel</span><p><b>About 22% of adults</b> in pooled studies, almost always found late. Creatinine is already in the panel, so an abnormal result costs nothing extra to find.</p><p class="fl">Finish line: a repeat creatinine and urine-albumin test to confirm; chronic means abnormal for three months or more.</p></li>
+<li><span class="mono">For factories &middot; anaemia</span><p><b>About eight in ten</b> female garment workers are anaemic in published samples. Haemoglobin is cheap and pairs with the VIA camp.</p><p class="fl">Finish line: a repeat haemoglobin after three months of iron.</p></li>
+</ol>
+<p class="bdsrc">Raised blood pressure 21.0% and raised blood glucose 8.3%, adults 18&ndash;69: <a href="https://cdn.who.int/media/docs/default-source/searo/bangladesh/bangladesh-ncd-risk-factor-survey-2018.pdf?sfvrsn=266ad1da_1" target="_blank" rel="noopener">WHO STEPS Bangladesh 2018</a>. Control about 14% nationally and 58% in the Bangladesh Hypertension Control Initiative, 328 facilities, March 2026: <a href="https://epidemiology.nhf.org.bd/programs/bhci" target="_blank" rel="noopener">National Heart Foundation</a>. Diabetes 13.2% of adults 20&ndash;79, 13.9 million, 39.1% undiagnosed, 2024: <a href="https://diabetesatlas.org/data-by-location/country/bangladesh/" target="_blank" rel="noopener">IDF Diabetes Atlas</a>. CKD 22.48% pooled: <a href="https://link.springer.com/article/10.1007/s11255-020-02597-6" target="_blank" rel="noopener">Banik et al., Int Urol Nephrol 2021</a>. Anaemia in female garment workers: <a href="https://www.mdpi.com/2072-6643/11/6/1259" target="_blank" rel="noopener">Hossain et al., Nutrients 2019</a>. Finish lines follow the Bangladesh National Hypertension Guideline, the ADA Standards of Care and KDIGO 2024; the windows (the month, 90 days) are the pilot&rsquo;s own and would be set with the clinical lead.</p>
+<p class="pai-small" style="margin-top:10px">Declined for now: lipids on their own (the next step is a risk decision, not a test), stress and mental health (no finish line a nurse can close), fatty liver, tobacco.</p>
 </section>
 
 <section class="pai-card" id="who" aria-labelledby="whh">
@@ -198,6 +214,12 @@ def init_body(MAIN, STEPS, BD_CSS):
 <li>BGMEA member-care MoUs with ten providers. <a href="{SRC['bgmea']}" target="_blank" rel="noopener">UNB, 6 Nov 2025</a>.</li>
 <li>Commission-based referral, 66 hospitals and 50 diagnostic centres. <a href="{SRC['tib']}" target="_blank" rel="noopener">TIB via Dhaka Tribune, 7 Feb 2018</a>.</li>
 <li>BRAC NCD360 referral tracking. <a href="{SRC['ncd360']}" target="_blank" rel="noopener">Daily Waadaa, 23 Sep 2026</a>.</li>
+<li>Raised blood pressure and blood glucose, adults 18&ndash;69. <a href="https://cdn.who.int/media/docs/default-source/searo/bangladesh/bangladesh-ncd-risk-factor-survey-2018.pdf?sfvrsn=266ad1da_1" target="_blank" rel="noopener">WHO STEPS Bangladesh 2018</a>.</li>
+<li>Hypertension control, national and programme. <a href="https://epidemiology.nhf.org.bd/programs/bhci" target="_blank" rel="noopener">National Heart Foundation, BHCI, Mar 2026</a>.</li>
+<li>Diabetes, adults 20&ndash;79, 2024. <a href="https://diabetesatlas.org/data-by-location/country/bangladesh/" target="_blank" rel="noopener">IDF Diabetes Atlas</a>.</li>
+<li>Chronic kidney disease, pooled prevalence. <a href="https://link.springer.com/article/10.1007/s11255-020-02597-6" target="_blank" rel="noopener">Banik et al., Int Urol Nephrol 2021</a>.</li>
+<li>Anaemia among female garment workers. <a href="https://www.mdpi.com/2072-6643/11/6/1259" target="_blank" rel="noopener">Hossain et al., Nutrients 2019</a>.</li>
+<li>Next steps: <a href="https://prescribingcompanion.com/bangladesh/other-common-clinical-conditions/hypertension-national-guideline/chapter-5-management-of-hypertension/53-pharmacological-management" target="_blank" rel="noopener">Bangladesh National Hypertension Guideline</a>; <a href="https://diabetesjournals.org/care/article/48/Supplement_1/S27/157566/2-Diagnosis-and-Classification-of-Diabetes" target="_blank" rel="noopener">ADA Standards of Care 2025</a>; <a href="https://kdigo.org/wp-content/uploads/2026/05/KDIGO-2024-CKD-Guideline-Summary-Recommendations-and-Practice-Points.pdf" target="_blank" rel="noopener">KDIGO 2024</a>.</li>
 </ul>
 <div style="margin:16px 0 4px"><a class="btn ghost" href="assets/HSREP_Prevention_Adoption_Initiative_Brief_Bangladesh.pdf" download>The one-page brief (PDF)</a></div>
 <p class="pai-caveat" style="margin-top:18px">Experience in one setting does not show that the routine will work in another. Bangladesh is where I already have standing and screening-service experience; that is a reason to start here one day, not evidence that it would work here. The first pilot in Michigan, its evaluation and its published toolkit come first. Figures above are from the sources named; none is HSREP&rsquo;s own data.</p>

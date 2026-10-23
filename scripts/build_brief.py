@@ -29,16 +29,16 @@ FONTS = '\n'.join([
 EXTRA = """
 h1{font-size:21px;margin:6px 0 4px}
 .sub{margin:0 0 9px}
-.pitch .row{font-size:9.2px;padding:5px 0}
+.pitch .row{font-size:9px;padding:4px 0}
 .stat{padding:8px 12px}
 .stat .t{font-size:8.2px}
-.card p{font-size:8.5px}
+.card p{font-size:8.3px;line-height:1.38}
 .eyebrow{margin:9px 0 4px}
-.foot .src{margin:6px 0 .16in}
+.foot .src{margin:5px 0 .1in;font-size:6.9px}
 .band .cols3{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:14px}
 .band table{width:100%;border-collapse:collapse;font-size:8.6px;line-height:1.35}
 .band th{text-align:left;font-family:'IBM Plex Mono',monospace;font-size:7.8px;letter-spacing:.12em;text-transform:uppercase;color:#C9D3DF;font-weight:500;padding:0 8px 4px 0;border-bottom:1px solid rgba(255,255,255,.22)}
-.band td{padding:4px 8px 4px 0;vertical-align:top;border-bottom:1px solid rgba(255,255,255,.1)}
+.band td{padding:3px 8px 3px 0;vertical-align:top;border-bottom:1px solid rgba(255,255,255,.1)}
 .band td:first-child{font-weight:600;color:#fff;white-space:nowrap}
 .band tr:last-child td{border-bottom:0}
 .rule{display:flex;gap:12px;align-items:center;background:#fff;border:1px solid var(--hair);border-left:4px solid var(--coral);border-radius:6px;padding:7px 14px;margin-top:9px;font-size:9.2px;line-height:1.4}
@@ -59,7 +59,7 @@ stats = [
 ]
 cards = [
     ('A &middot; Start here', 'The referral tail of factory screening', 'The provider&rsquo;s nurse follows the referred women to the public colposcopy clinic. Paid by the sponsor that already funds the screening: a brand programme, UNFPA, or the factory as a corporate client. Measure: referred women reaching colposcopy within 90 days, against 40.4%.'),
-    ('B &middot; Alongside', 'A completion contract inside one private network', 'The network runs the routine on its own abnormal results where the next step is in-house, with one transparent price and no per-referral payment. It pays for it, and gains completion from patients it already acquired. Measure: completion within the clinical window, by result type.'),
+    ('B &middot; Alongside', 'A completion contract on corporate check-ups', 'The network follows every abnormal result from its own employer check-ups to the next step in-house: high blood pressure (21% of adults), HbA1c over the line (13%), abnormal creatinine (about 22%). One transparent price, no per-referral payment. It pays, and sells employers completion instead of a check-up. Measure: abnormal results reaching their next step, per employer.'),
     ('C &middot; At scale', 'A follow-up cell inside the national programme', 'Two or three upazilas use the registry&rsquo;s own list and add a phone call, a booked slot, the fare, and the result written back. Funded from programme money already committed for 2027&ndash;2031. Measure: the national 40.4% in those upazilas, a year later.'),
 ]
 matrix = [
@@ -91,7 +91,7 @@ html = f"""<!doctype html><html><head><meta charset="utf-8"><title>Prevention Ad
 <div class="foot"><div class="cols">
 <div class="l"><b>Md Shafaat Ali Choyon</b> &mdash; Founder, HSREP &middot; MBA, MCIM, MPH, CHES&reg;<br>hsrep.bd/initiative &middot; hsraep.org/initiative &middot; Book 30 min: calendly.com/shafaat-alic/30min<br>LinkedIn: /in/sacgrowthspecialist</div>
 <div class="r">An HSREP initiative in development. Everything here is future direction and illustrative; no patient data has been collected; no Bangladesh partner, site or funding is confirmed, and no organisation named has been approached. Figures are from the sources named, none from HSREP&rsquo;s own data. Operational materials will be reviewed by counsel before any launch.</div>
-</div><div class="src">SOURCES &mdash; Nessa et al., BMC Global and Public Health 2025;3:34 &middot; MOHFW National Cervical &amp; Breast Cancer Statistics dashboard &middot; BMC Public Health, May 2025 (e-HIS registry) &middot; BMC Health Services Research, Jan 2026 (NCD corners, 12 upazilas) &middot; Jhpiego, Jan 2026 (factory VIA clinics) &middot; UNFPA, 10 Oct 2026 (EIB Women&rsquo;s Health Initiative 2027&ndash;2031) &middot; UNB, 6 Nov 2025 (BGMEA member-care MoUs) &middot; TIB via Dhaka Tribune, Feb 2018 (commission-based referral). Version 23 Oct 2026.</div></div>
+</div><div class="src">SOURCES &mdash; Nessa et al., BMC Global and Public Health 2025;3:34 &middot; MOHFW National Cervical &amp; Breast Cancer Statistics dashboard &middot; BMC Public Health, May 2025 (e-HIS registry) &middot; BMC Health Services Research, Jan 2026 (NCD corners, 12 upazilas) &middot; Jhpiego, Jan 2026 (factory VIA clinics) &middot; UNFPA, 10 Oct 2026 (EIB Women&rsquo;s Health Initiative 2027&ndash;2031) &middot; UNB, 6 Nov 2025 (BGMEA member-care MoUs) &middot; TIB via Dhaka Tribune, Feb 2018 (commission-based referral) &middot; WHO STEPS Bangladesh 2018 &middot; IDF Diabetes Atlas 2024 &middot; Banik et al., Int Urol Nephrol 2021. Version 23 Oct 2026.</div></div>
 </div></div></body></html>"""
 
 out = os.path.join(ROOT, 'scripts', 'brief_bd.html')
