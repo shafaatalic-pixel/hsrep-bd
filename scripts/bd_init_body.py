@@ -68,7 +68,7 @@ def init_body(MAIN, STEPS, BD_CSS):
 <span class="pai-chip" style="align-self:flex-start">Future direction &middot; not part of the first pilot</span>
 <h1>Six in ten referred women never reach colposcopy. The screening already found them.</h1>
 <p class="dek">Bangladesh&rsquo;s national programme screens millions of women and records every positive result. Then it loses most of them at the next step. The Prevention Adoption Initiative is a weekly routine for that step: find who is overdue, rank by urgency, act with a call and a booking and the fare, close when it is done. This page shows how it could run here, who would do what, and who would pay. Nothing on it has a partner, a date or funding.</p>
-<div class="pai-cta"><a class="btn pai-primary" href="https://calendly.com/shafaat-alic/30min">Talk to me, 30 minutes <span class="ar">&rarr;</span></a><a class="btn pai-secondary" href="{MAIN}/initiative.html">The first pilot, in Michigan <span class="ar">&rarr;</span></a></div>
+<div class="pai-cta"><a class="btn pai-primary" href="https://calendly.com/shafaat-alic/30min">Talk to me, 30 minutes <span class="ar">&rarr;</span></a><a class="btn pai-secondary" href="assets/HSREP_Prevention_Adoption_Initiative_Brief_Bangladesh.pdf" download>The one-page brief (PDF) <span class="ar">&rarr;</span></a></div>
 </div>
 <div class="bdstat" aria-label="The gap in numbers">
 <div><div class="n">40.4%</div><p>of VIA-positive women reached colposcopy, 2018&ndash;2023. Six in ten did not.</p></div>
@@ -199,6 +199,7 @@ def init_body(MAIN, STEPS, BD_CSS):
 <li>Commission-based referral, 66 hospitals and 50 diagnostic centres. <a href="{SRC['tib']}" target="_blank" rel="noopener">TIB via Dhaka Tribune, 7 Feb 2018</a>.</li>
 <li>BRAC NCD360 referral tracking. <a href="{SRC['ncd360']}" target="_blank" rel="noopener">Daily Waadaa, 23 Sep 2026</a>.</li>
 </ul>
+<div style="margin:16px 0 4px"><a class="btn ghost" href="assets/HSREP_Prevention_Adoption_Initiative_Brief_Bangladesh.pdf" download>The one-page brief (PDF)</a></div>
 <p class="pai-caveat" style="margin-top:18px">Experience in one setting does not show that the routine will work in another. Bangladesh is where I already have standing and screening-service experience; that is a reason to start here one day, not evidence that it would work here. The first pilot in Michigan, its evaluation and its published toolkit come first. Figures above are from the sources named; none is HSREP&rsquo;s own data.</p>
 </section>
 
