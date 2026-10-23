@@ -484,6 +484,13 @@ html.hmenu-open #hmenu-panel{display:block}
 .bdsteps p{margin:0;font-size:14px;line-height:1.5}
 .bdpat{margin:0 0 22px;background:var(--panel);border-radius:8px;padding:12px 14px;font-size:14px;line-height:1.5;color:var(--heading)}
 .bdpat .mono{display:block;font-size:10px;color:var(--muted);margin-bottom:4px}
+.bdtoc{display:flex;flex-direction:column;gap:0;border:1px solid var(--pai-line);border-radius:12px;background:#fff;padding:14px 18px 6px;align-self:start}
+.bdtoc>.mono{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.bdtoc a{display:grid;grid-template-columns:34px minmax(0,1fr);gap:8px;align-items:start;padding:10px 0;border-top:1px solid var(--pai-line);text-decoration:none;color:var(--heading)}
+.bdtoc a b{font-family:var(--font-mono);font-weight:500;font-size:12px;color:var(--pai-coral-text);padding-top:2px}
+.bdtoc a span{font-family:var(--font-display);font-size:1.08rem;line-height:1.25}
+.bdtoc a small{display:block;font-family:var(--font-body,inherit);font-size:13px;line-height:1.4;color:var(--muted);margin-top:2px}
+.bdtoc a:hover span{color:var(--coral)}
 .bdstat{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-self:start}
 .bdstat>div{border:1px solid var(--pai-line);border-radius:10px;padding:18px 20px;background:#fff}
 .bdstat .n{font-family:var(--font-mono);font-size:1.6rem;color:var(--heading);margin-bottom:4px}
@@ -538,6 +545,13 @@ html.hmenu-open #hmenu-panel{display:block}
 .bdorg ul{margin:0;padding:0;list-style:none;font-size:14px;line-height:1.6;color:var(--ink)}
 .bdchron p b{color:var(--heading)}
 .bdchron p.fl{margin-top:8px;padding-top:8px;border-top:1px dashed var(--pai-line);font-size:13px;color:var(--heading)}
+.bdpath{margin:-28px 0 28px;padding:16px 20px 12px;border:1px solid var(--pai-line);border-radius:12px;background:#fff}
+.bdpath>.mono{display:block;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.bdpath ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;counter-reset:p}
+.bdpath li{position:relative;padding-left:34px;counter-increment:p;font-size:13.5px;line-height:1.5;color:var(--ink)}
+.bdpath li::before{content:counter(p);position:absolute;left:0;top:1px;width:24px;height:24px;border-radius:50%;background:var(--heading);color:#fff;font-family:var(--font-mono);font-size:11px;display:flex;align-items:center;justify-content:center}
+.bdpath li b{display:block;font-family:var(--font-display);font-size:1.05rem;color:var(--heading);margin-bottom:3px}
+@media(max-width:760px){.bdpath ol{grid-template-columns:1fr}.bdpath{margin-top:-12px}}
 .bdsources{margin:0;padding:0;list-style:none;font-size:13px;line-height:1.55;color:var(--ink);columns:2;column-gap:28px}
 .bdsources li{break-inside:avoid;margin-bottom:6px}
 .bdsources a{color:inherit}
@@ -548,7 +562,7 @@ html.hmenu-open #hmenu-panel{display:block}
 <div class="copy">
 <span class="pai-chip" style="align-self:flex-start">Future direction &middot; not part of the first pilot</span>
 <h1>Six in ten referred women never reach colposcopy. The screening already found them.</h1>
-<p class="dek">Bangladesh&rsquo;s national programme screens millions of women and records every positive result. Then it loses most of them at the next step. The Prevention Adoption Initiative is a weekly routine for that step: find who is overdue, rank by urgency, act with a call and a booking and the fare, close when it is done. This page shows how it could run here, first on cancer screening and then on the chronic conditions a corporate check-up finds, who would do what, and who would pay. Nothing on it has a partner, a date or funding.</p>
+<p class="dek">Bangladesh&rsquo;s national programme screens millions of women and records every positive result. Then it loses most of them at the next step. The Prevention Adoption Initiative is a weekly routine for that step: find who is overdue, rank by urgency, act with a call and a booking and the fare, close when it is done. This page shows how it could run here, first on cancer screening and then on the chronic conditions a corporate check-up finds, who would do what, and who would pay. The design is published; the first pilot is in Michigan; this is the Bangladesh adaptation, ready for a first conversation.</p>
 <div class="pai-cta"><a class="btn pai-primary" href="https://calendly.com/shafaat-alic/30min">Talk to me, 30 minutes <span class="ar">&rarr;</span></a><a class="btn pai-secondary" href="assets/HSREP_Prevention_Adoption_Initiative_Brief_Bangladesh.pdf" download>The one-page brief (PDF) <span class="ar">&rarr;</span></a></div>
 </div>
 <div class="bdstat" aria-label="The gap in numbers">
@@ -556,6 +570,15 @@ html.hmenu-open #hmenu-panel{display:block}
 <div><div class="n">32%</div><p>of newly diagnosed hypertension and diabetes patients at NCD corners did not return within three months.</p></div>
 </div>
 </div></section>
+
+<div class="wrap"><div class="bdpath" aria-label="How it moves">
+<span class="mono">How it moves &middot; every stage ends with its own number</span>
+<ol>
+<li><b>Michigan, one clinic</b><span>Three months of feasibility, then the clinic decides whether to go to month twelve. An independent evaluator, named in the agreement before the start, judges against the clinic&rsquo;s own trend.</span></li>
+<li><b>Bangladesh, one provider</b><span>Model A: one provider, one factory client, three months, then the same decision. The evaluator here is a university or research institute, named before the start (see 06).</span></li>
+<li><b>Then the programme</b><span>Model C goes to the national programme on model A&rsquo;s number, not before. Each stage is judged by the number it set out to move.</span></li>
+</ol>
+</div></div>
 
 <div class="wrap" style="padding:8px 0 56px">
 
@@ -593,7 +616,7 @@ html.hmenu-open #hmenu-panel{display:block}
 <p class="lede">In order. The first is small enough to start with one provider and one factory client, and it is where the money for screening is already being spent.</p>
 <div class="bdmodels">
 <article class="bdm first">
-<div class="k"><span class="mono">A &middot; Start here</span><span class="st fut">Future possibility</span></div>
+<div class="k"><span class="mono">A &middot; Start here</span></div>
 <h3>The referral tail of factory screening</h3>
 <p>A private provider already screens garment workers in the factory and refers the women it cannot treat on site. The routine follows those women to the public colposcopy clinic.</p>
 <dl>
@@ -605,7 +628,7 @@ html.hmenu-open #hmenu-panel{display:block}
 <div class="m"><span class="mono">Measure</span>Share of referred women reaching colposcopy within 90 days, against the national 40.4%.</div>
 </article>
 <article class="bdm">
-<div class="k"><span class="mono">B &middot; Alongside</span><span class="st fut">Future possibility</span></div>
+<div class="k"><span class="mono">B &middot; Alongside A</span></div>
 <h3>A completion contract on corporate check-ups</h3>
 <p>A network already sells annual check-ups to employers. Every round produces high blood pressure readings, HbA1c over the line, abnormal creatinine. Then nothing happens. The routine follows each abnormal result to its next step inside the network.</p>
 <dl>
@@ -617,7 +640,7 @@ html.hmenu-open #hmenu-panel{display:block}
 <div class="m"><span class="mono">Measure</span>Share of abnormal results that reached their next step within the window, per employer.</div>
 </article>
 <article class="bdm">
-<div class="k"><span class="mono">C &middot; At scale</span><span class="st fut">Future possibility</span></div>
+<div class="k"><span class="mono">C &middot; After A</span></div>
 <h3>A follow-up cell inside the national programme</h3>
 <p>Two or three upazilas use the registry&rsquo;s existing list of VIA-positive women and add what the SMS cannot do.</p>
 <dl>
@@ -629,7 +652,7 @@ html.hmenu-open #hmenu-panel{display:block}
 <div class="m"><span class="mono">Measure</span>The national 40.4% in those upazilas, a year later, and the share of treatments with histopathology on record.</div>
 </article>
 </div>
-<p class="pai-small" style="margin-top:14px">No stage starts in Bangladesh until the Michigan pilot has a number, and no stage starts until the one before it has a number.</p>
+<p class="pai-small" style="margin-top:14px">Each stage ends with its own number, judged by an independent evaluator named before the start, and the next stage begins on that number.</p>
 </section>
 
 <section class="pai-card" id="chronic" aria-labelledby="chh">
@@ -710,7 +733,7 @@ html.hmenu-open #hmenu-panel{display:block}
 </section>
 
 <div class="pai-close"><p><b>All of this depends on the first pilot.</b><br>If you run a provider, fund factory screening, or sit inside the programme, and you want to talk about the step after the referral, that is the conversation to have.</p><a class="btn pai-primary" href="https://calendly.com/shafaat-alic/30min">Book 30 min <span class="ar">&rarr;</span></a></div>
-<p class="pai-small">An HSREP initiative in development. Everything on this page is future direction and illustrative; no patient data has been collected, and no Bangladesh partner, site or funding is confirmed.</p>
+<p class="pai-small">An HSREP initiative in development. The design is published; a Bangladesh partner, site and funding come next. Everything on this page is illustrative, and no patient data has been collected.</p>
 </div>
 
 </main><footer><div class="wrap">

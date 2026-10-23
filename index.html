@@ -484,6 +484,13 @@ html.hmenu-open #hmenu-panel{display:block}
 .bdsteps p{margin:0;font-size:14px;line-height:1.5}
 .bdpat{margin:0 0 22px;background:var(--panel);border-radius:8px;padding:12px 14px;font-size:14px;line-height:1.5;color:var(--heading)}
 .bdpat .mono{display:block;font-size:10px;color:var(--muted);margin-bottom:4px}
+.bdtoc{display:flex;flex-direction:column;gap:0;border:1px solid var(--pai-line);border-radius:12px;background:#fff;padding:14px 18px 6px;align-self:start}
+.bdtoc>.mono{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.bdtoc a{display:grid;grid-template-columns:34px minmax(0,1fr);gap:8px;align-items:start;padding:10px 0;border-top:1px solid var(--pai-line);text-decoration:none;color:var(--heading)}
+.bdtoc a b{font-family:var(--font-mono);font-weight:500;font-size:12px;color:var(--pai-coral-text);padding-top:2px}
+.bdtoc a span{font-family:var(--font-display);font-size:1.08rem;line-height:1.25}
+.bdtoc a small{display:block;font-family:var(--font-body,inherit);font-size:13px;line-height:1.4;color:var(--muted);margin-top:2px}
+.bdtoc a:hover span{color:var(--coral)}
 .bdstat{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-self:start}
 .bdstat>div{border:1px solid var(--pai-line);border-radius:10px;padding:18px 20px;background:#fff}
 .bdstat .n{font-family:var(--font-mono);font-size:1.6rem;color:var(--heading);margin-bottom:4px}
@@ -500,13 +507,15 @@ html.hmenu-open #hmenu-panel{display:block}
 <div class="copy">
 <span class="pai-chip" style="align-self:flex-start">Bangladesh edition</span>
 <h1>HSREP in Bangladesh.</h1>
-<p class="dek">HSREP is an independent public-health research and advocacy platform, founded in Michigan by Md Shafaat Ali Choyon, MBA, MCIM, MPH, CHES&reg;. Its first season examined health systems in the United States and Bangladesh. This edition collects the Bangladesh side: the Season 1 pieces written for readers here, and what the Prevention Adoption Initiative could look like in Bangladesh once its first pilot has been evaluated.</p>
+<p class="dek">HSREP is an independent public-health research and advocacy platform, founded in Michigan by Md Shafaat Ali Choyon, MBA, MCIM, MPH, CHES&reg;. Its first season examined health systems in the United States and Bangladesh. This edition collects the Bangladesh side: the Season 1 pieces written for readers here, and what the Prevention Adoption Initiative could look like in Bangladesh after its first pilot in Michigan.</p>
 <div class="pai-cta"><a class="btn pai-primary" href="initiative.html">Where the routine could run here <span class="ar">&rarr;</span></a><a class="btn pai-secondary" href="https://hsraep.org/">The main site <span class="ar">&rarr;</span></a></div>
 </div>
-<div class="bdstat" aria-label="This edition in numbers">
-<div><div class="n">4</div><p>Season 1 pieces on Bangladesh, three of them in The Daily Star.</p></div>
-<div><div class="n">40.4%</div><p>of VIA-positive women reached colposcopy, 2018&ndash;2023. The step the initiative is about.</p><span class="st fut">Future possibility</span></div>
-</div>
+<nav class="bdtoc" aria-label="On this page">
+<span class="mono">On this page</span>
+<a href="#season-1"><b>01</b><span>The Bangladesh pieces<small>Four Season 1 articles, three in The Daily Star</small></span></a>
+<a href="#initiative"><b>02</b><span>The initiative<small>A weekly routine for the step after the referral</small></span></a>
+<a href="#who"><b>03</b><span>Who is behind it<small>The founder, and where the record of work lives</small></span></a>
+</nav>
 </div></section>
 
 <div class="wrap" style="padding:8px 0 56px">
@@ -530,20 +539,26 @@ html.hmenu-open #hmenu-panel{display:block}
 </ol>
 <div class="bdtwo" style="margin-top:22px">
 <div>
-<p style="margin:0 0 14px;font-size:15px;line-height:1.6;max-width:66ch">The first pilot is proposed for one health center in Michigan, on colorectal cancer screening, including the colonoscopy after a positive test. It has no host clinic yet. Bangladesh is where I have standing and screening-service experience, and the national cervical and breast screening program has published its own follow-up gap, so it is the natural second setting, after that pilot has been evaluated and not before.</p>
-<p class="pai-small" style="margin:0">An HSREP initiative in development. No Bangladesh partner, site or funding is confirmed.</p>
+<p style="margin:0 0 14px;font-size:15px;line-height:1.6;max-width:66ch">The first pilot is designed for one health center in Michigan, on colorectal cancer screening, including the colonoscopy after a positive test; the design is published and the next step is a host clinic. Bangladesh is where I have standing and screening-service experience, and the national cervical and breast screening program has published its own follow-up gap, so it is the natural second setting, with its own three-month pilot and its own number.</p>
+<p class="pai-small" style="margin:0">An HSREP initiative in development. The design is published; a Bangladesh partner, site and funding come next.</p>
 </div>
 <div class="pai-close" style="margin:0;padding:22px 24px"><p><b>Where the routine could run here.</b><br>The gap in numbers, three ways to run it, who would do what and who would pay, in plain words.</p><a class="btn pai-primary" href="initiative.html">Read the page <span class="ar">&rarr;</span></a></div>
 </div>
 </section>
 
-<section class="pai-card" id="about" aria-labelledby="abh">
-<span class="mono">03 &middot; This edition</span>
-<h2 id="abh">Why a .bd address.</h2>
-<p class="lede">So that readers, journalists and institutions in Bangladesh have an address that is theirs, and so that the Bangladesh work has a home that does not sit inside the page describing the Michigan pilot.</p>
+<section class="pai-card" id="who" aria-labelledby="whoh">
+<span class="mono">03 &middot; Who is behind it</span>
+<h2 id="whoh">One person, with a record on both sides of the problem.</h2>
+<p class="lede">HSREP is founded and run by Md Shafaat Ali Choyon, MBA, MCIM, MPH, CHES&reg;. Seventeen years getting people to follow through, in health care since 2021.</p>
 <div class="bdtwo">
-<div><p style="margin:0 0 14px;font-size:15px;line-height:1.6;max-width:66ch">Everything else, the articles, the engagement data, the corrections log, the editorial standards, lives on <a href="https://hsraep.org/" style="color:var(--coral);text-decoration:none;border-bottom:1px solid rgba(242,109,90,.45)">hsraep.org</a> and is not duplicated here. This is the same HSREP, not a separate body.</p></div>
-<div><p style="margin:0 0 14px;font-size:15px;line-height:1.6;max-width:66ch">Write to <a href="mailto:contact@hsraep.org" style="color:var(--coral);text-decoration:none;border-bottom:1px solid rgba(242,109,90,.45)">contact@hsraep.org</a>. For the initiative, <a href="https://calendly.com/shafaat-alic/30min" style="color:var(--coral);text-decoration:none;border-bottom:1px solid rgba(242,109,90,.45)">book thirty minutes</a>.</p></div>
+<div>
+<p style="margin:0 0 14px;font-size:15px;line-height:1.6;max-width:66ch"><b style="color:var(--heading)">Inside a Bangladeshi delivery system.</b> At Praava Health in Dhaka, as Head of Marketing &amp; Corporate Sales, I redesigned the diagnostic packages and launched Ghore Lab, a home sample-collection service, during COVID; laboratory screening utilization rose 34% from 2021 to 2022. I sold corporate health to employers, and I watched the break between a test started and a test finished happen, for years, from the inside. Later, as chief operating officer at Laser Treat Group, I ran the company&rsquo;s ERP, BI and CRM systems.</p>
+<p style="margin:0 0 14px;font-size:15px;line-height:1.6;max-width:66ch"><b style="color:var(--heading)">Public health, published.</b> An MPH in Health Education &amp; Promotion from Eastern Michigan University and CHES&reg; certification. Season 1 of HSREP: nine published pieces across the United States and Bangladesh, with the engagement record, the methods and the corrections log all public.</p>
+</div>
+<div>
+<p style="margin:0 0 14px;font-size:15px;line-height:1.6;max-width:66ch"><b style="color:var(--heading)">One HSREP.</b> This edition is not a separate body. The record of work, the editorial standards, the methods and the corrections log live on <a href="https://hsraep.org/" style="color:var(--coral);text-decoration:none;border-bottom:1px solid rgba(242,109,90,.45)">hsraep.org</a>; the .bd address exists so that readers and institutions in Bangladesh have one that is theirs, and so the Bangladesh work has a home that does not sit inside the page describing the Michigan pilot.</p>
+<p style="margin:0 0 14px;font-size:15px;line-height:1.6;max-width:66ch">Write to <a href="mailto:contact@hsraep.org" style="color:var(--coral);text-decoration:none;border-bottom:1px solid rgba(242,109,90,.45)">contact@hsraep.org</a>. For the initiative, <a href="https://calendly.com/shafaat-alic/30min" style="color:var(--coral);text-decoration:none;border-bottom:1px solid rgba(242,109,90,.45)">book thirty minutes</a>. More on the founder: <a href="https://hsraep.org/initiative.html#why-me" style="color:var(--coral);text-decoration:none;border-bottom:1px solid rgba(242,109,90,.45)">why I can do this</a>.</p>
+</div>
 </div>
 </section>
 </div>
