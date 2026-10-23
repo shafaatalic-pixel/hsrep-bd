@@ -114,7 +114,7 @@ def init_body(MAIN, STEPS, BD_CSS):
 <span class="mono">How it moves &middot; every stage ends with its own number</span>
 <ol>
 <li><b>Michigan, one clinic</b><span>Three months of feasibility, then the clinic decides whether to go to month twelve. An independent evaluator, once one is confirmed, judges against the clinic&rsquo;s own trend; without one, the result is the clinic&rsquo;s own before-and-after.</span></li>
-<li><b>Bangladesh, one provider</b><span>Model A: one provider, one factory client, three months, then the same decision. The evaluator here is a university or research institute, named before the start (see 06).</span></li>
+<li><b>Bangladesh, one provider</b><span>Model A: one provider, one factory client, three months, then the same decision Michigan makes: stop, or continue to twelve months. The evaluator here is a university or research institute, named before the start (see 06).</span></li>
 <li><b>Then the programme</b><span>Model C goes to the national programme on model A&rsquo;s number, not before. Each stage is judged by the number it set out to move.</span></li>
 </ol>
 </div></div>
@@ -224,7 +224,7 @@ def init_body(MAIN, STEPS, BD_CSS):
 <span class="mono">05 &middot; In plain words</span>
 <h2 id="plh">What I would say in the room.</h2>
 <div class="bdq">
-<blockquote><span class="mono">If you run a private network</span>You already screen factory workers. Around six in a hundred have an abnormal result; some you treat that day, the rest you refer, and then nobody knows. <b>Your nurse keeps the list of referred women and works it two hours a week: call, book, send the fare, remind, write down when it is done.</b> The follow-up cases come to you by contract, and you get a number no one else here has. One network, three months, one factory client, then a decision.</blockquote>
+<blockquote><span class="mono">If you run a private network</span>You already screen factory workers. Around six in a hundred have an abnormal result; some you treat that day, the rest you refer, and then nobody knows. <b>Your nurse keeps the list of referred women and works it two hours a week: call, book, send the fare, remind, write down when it is done.</b> The follow-up cases come to you by contract, and you get a number no one else here has. One network, three months, one factory client, then a decision: stop, or continue to twelve months.</blockquote>
 <blockquote><span class="mono">If you fund factory screening</span>Your screening finds the women. The programme loses them at the next step: nationally, four in ten reach colposcopy. <b>Add a small fee per completed follow-up and the fare. The test itself is free at the public clinic.</b> You get, for the first time, a completion rate per factory instead of a screening count.</blockquote>
 <blockquote><span class="mono">If you run the national programme</span>Your registry already lists every VIA-positive woman and sends her an SMS. <b>In two or three upazilas, add a phone call from the community clinic, a booked slot, the fare, and the result written back, including histopathology.</b> The measure is your own 40.4%, in those upazilas, a year later.</blockquote>
 </div>
@@ -233,7 +233,7 @@ def init_body(MAIN, STEPS, BD_CSS):
 <section class="pai-card" id="partners" aria-labelledby="pth">
 <span class="mono">06 &middot; Who could matter</span>
 <h2 id="pth">Organisations that fit, none of them confirmed.</h2>
-<p class="lede">Named because of what they already do, not because they have agreed to anything. None has been approached on behalf of this page.</p>
+<p class="lede">Named because of what they already do, not because they have agreed to anything. None has been approached on behalf of this page. Disclosure: I worked at Praava Health as Head of Marketing &amp; Corporate Sales until October 2023. I have no current role or financial interest there.</p>
 <div class="bdorg">
 <div><span class="mono">Providers (model A, B)</span><ul><li>The ten providers under BGMEA&rsquo;s member-care MoUs of Nov 2025, including Praava, United, LabAid and Popular</li><li>Surjer Hashi Network</li><li>Grameen Kalyan</li></ul></div>
 <div><span class="mono">Screening and sponsors (A)</span><ul><li>UNFPA Bangladesh and Jhpiego, whose factory clinics already screen</li><li>Brand worker-health programmes</li><li>BGMEA, as a door to member factories, not an operator</li></ul></div>

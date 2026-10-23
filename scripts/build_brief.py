@@ -50,7 +50,7 @@ pitch = [
     ('The routine', 'Two hours a week, one short list, four steps, run by the provider&rsquo;s own nurse with a worklist: <b>find</b> who is overdue, <b>rank</b> by days since the positive result and prior no-shows, <b>act</b> with a call in Bangla, a booked slot and the fare, <b>close</b> when the result is back. No software to buy, no new staff.'),
     ('Where first', 'The referral tail of factory screening. A private provider already screens garment workers in the factory and refers the women it cannot treat on site. <b>Provider-run, factory-hosted, sponsor-paid, with the public colposcopy clinic as the endpoint.</b> The factory never sees a result; it releases the right women on the right mornings.'),
     ('The rule', '<b>Paid per completion, never per referral.</b> The outreach nurse is paid for the list; the provider is paid when the woman finishes. The colposcopy itself is free at the public clinic.'),
-    ('The ask', 'One private provider, one factory client, three months, then a decision. After the Michigan pilot has a number, and not before. Step one, now, is a 30-minute conversation.'),
+    ('The ask', 'One private provider, one factory client, three months, then the same decision as Michigan: stop, or continue to twelve months. After the Michigan pilot has a number, and not before. Step one, now, is a 30-minute conversation.'),
 ]
 stats = [
     ('51,913 &rarr; 20,954', 'VIA-positive women, and the number who reached colposcopy: 40.4%, Jan 2018 to May 2023 (Nessa et al., 2025).'),
