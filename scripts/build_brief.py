@@ -46,7 +46,7 @@ h1{font-size:21px;margin:6px 0 4px}
 """
 
 pitch = [
-    ('The gap', 'Bangladesh&rsquo;s national programme screened 1.56 million women by VIA between 2018 and 2023 and recorded every positive result. <b>Only 40.4% of the 51,913 VIA-positive women reached colposcopy.</b> The registry already sends each of them an SMS; it cannot store the histopathology result. Nobody in Bangladesh publishes a completion rate for an abnormal result.'),
+    ('The gap', 'Bangladesh&rsquo;s national programme screened 1.56 million women by VIA between 2018 and 2023 and recorded every positive result. <b>Only 40.4% of the 51,913 VIA-positive women reached colposcopy.</b> The registry already sends each of them an SMS; it cannot store the histopathology result. No completion rate is published for factory or check-up referrals.'),
     ('The routine', 'Two hours a week, one short list, four steps, run by the provider&rsquo;s own nurse with a worklist: <b>find</b> who is overdue, <b>rank</b> by days since the positive result and prior no-shows, <b>act</b> with a call in Bangla, a booked slot and the fare, <b>close</b> when the result is back. No software to buy, no new staff.'),
     ('Where first', 'The referral tail of factory screening. A private provider already screens garment workers in the factory and refers the women it cannot treat on site. <b>Provider-run, factory-hosted, sponsor-paid, with the public colposcopy clinic as the endpoint.</b> The factory never sees a result; it releases the right women on the right mornings.'),
     ('The rule', '<b>Paid per completion, never per referral.</b> The outreach nurse is paid for the list; the provider is paid when the woman finishes. The colposcopy itself is free at the public clinic.'),
@@ -68,7 +68,7 @@ matrix = [
     ('Sponsor', 'Screening it already funds; a small fee per completion; the fare', 'A completion rate per factory instead of a screening count'),
     ('Public programme', 'Nothing new; the colposcopy clinics exist', 'Its 40.4% moving; results written back to the registry'),
     ('The woman', 'Nothing', 'Reaches the next step, morning paid, fare covered'),
-    ('HSREP', 'The worklist, the rules, the training; the sponsor or provider pays for the founder&rsquo;s time, no fee on top', 'The first published completion number in Bangladesh'),
+    ('HSREP', 'The worklist, the rules, the training; the sponsor or provider pays for the founder&rsquo;s time, no fee on top', 'The first published completion number for factory and check-up referrals'),
 ]
 
 rows = ''.join(f'<div class="row"><div class="k">{k}</div><div>{v}</div></div>' for k, v in pitch)
