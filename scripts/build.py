@@ -43,6 +43,13 @@ def absolutize(s):
 head = re.sub(r'<script src="/assets/analytics\.js[^"]*" defer></script>', '', head)
 head = re.sub(r'<script src="/assets/assistant\.js[^"]*" defer></script>', '', head)
 head = relativize(head)
+# the Bangladesh founder assistant (assets/ask-bd.js; presenter clips copied from the main site)
+assert head.count('</head>') == 1
+head = head.replace('</head>', '<script src="assets/ask-bd.js" defer></script></head>')
+import shutil
+(ROOT / 'assets' / 'presenter').mkdir(exist_ok=True)
+for f in ('poster.jpg', 'idle.mp4', 'greet.mp4', 'think.mp4', 'talk.mp4'):
+    shutil.copyfile(ROOT.parent / 'website' / 'assets' / 'presenter' / f, ROOT / 'assets' / 'presenter' / f)
 head = re.sub(r'<script type="application/ld\+json">.*?</script>', '%%JSONLD%%', head, count=1, flags=re.S)
 head = re.sub(r'<meta name="description" content="[^"]*">', '%%DESC%%', head, count=1)
 head = re.sub(r'<title>[^<]*</title>', '%%TITLE%%', head, count=1)
@@ -66,6 +73,8 @@ assert '%%SECNAV%%' in header and 'hs-ask' not in header
 
 # footer and scripts: absolute links, relative assets, an edition line
 tail = relativize(absolutize(tail))
+# the main site's footer links here; on this site that link would point at itself
+tail = tail.replace('<a href="https://hsrep.bd" target="_blank" rel="noopener">HSREP Bangladesh &#8599;</a>', '')
 old_tag = '<p>An independent public-health research and advocacy platform examining health-system resilience as economic protection infrastructure.</p>'
 assert tail.count(old_tag) == 1
 tail = tail.replace(old_tag, old_tag[:-4] + ' This is the Bangladesh edition; the record of work is on <a href="%s/" style="color:inherit;display:inline">hsraep.org</a>.</p>' % MAIN)
