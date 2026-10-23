@@ -6,14 +6,14 @@ Reads ../website/initiative-next.html for the head, header, footer and scripts,
 and scripts/_orig_initiative-next.html (main at f377a49) for the Bangladesh
 material that left the main site on 21 Oct 2026.
 """
-import re, pathlib, datetime
+import re, pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 TPL = (ROOT.parent / 'website' / 'initiative-next.html').read_text(encoding='utf-8')
 ORIG = (ROOT / 'scripts' / '_orig_initiative-next.html').read_text(encoding='utf-8')
 MAIN = 'https://hsraep.org'
 BD = 'https://hsrep.bd'
-TODAY = '2026-10-21'
+TODAY = '2026-10-23'
 
 # ---------- pieces of the template ----------
 head, rest = TPL.split('<header class="site hs-top">', 1)
@@ -68,7 +68,7 @@ assert '%%SECNAV%%' in header and 'hs-ask' not in header
 tail = relativize(absolutize(tail))
 old_tag = '<p>An independent public-health research and advocacy platform examining health-system resilience as economic protection infrastructure.</p>'
 assert tail.count(old_tag) == 1
-tail = tail.replace(old_tag, old_tag[:-4] + ' This is the Bangladesh edition; the record of work is on <a href="%s/" style="color:inherit">hsraep.org</a>.</p>' % MAIN)
+tail = tail.replace(old_tag, old_tag[:-4] + ' This is the Bangladesh edition; the record of work is on <a href="%s/" style="color:inherit;display:inline">hsraep.org</a>.</p>' % MAIN)
 
 # ---------- the Bangladesh material from the original roadmap ----------
 a = ORIG.index('<div role="tabpanel" id="pan-bd" aria-labelledby="tab-bd" hidden>')
@@ -81,8 +81,15 @@ bd_block = bd_block.rstrip()[:-6].rstrip()  # drop the tabpanel closer
 bd_block = re.sub(r'^<div class="cview">.*?</div></div>\n', '', bd_block, count=1, flags=re.S)
 bd_block = bd_block.replace('href="initiative.html#host"', 'href="%s/initiative.html#host"' % MAIN)
 bd_block = bd_block.replace('href="initiative.html#pilot"', 'href="%s/initiative.html#pilot"' % MAIN)
-assert 'sysp-grid' in bd_block and 'for-publicbd' in bd_block and 'Brief_Bangladesh.pdf' in bd_block
+# the old h3 becomes a section header, so drop it and its prospective note (restated below)
+bd_block = re.sub(r'<h3 id="bangladesh"[^>]*>Different partners, different value, same routine</h3>\n', '', bd_block, count=1)
+bd_block = re.sub(r'<span class="mono" style="display:block;color:var\(--muted\);font-size:10px;margin-bottom:10px">Organizations named here are prospective\. None is a confirmed partner\.</span>\n', '', bd_block, count=1)
+# split: comparison grid | partner cards + role cards + brief
+grid, partners = bd_block.split('</div></div>\n', 1)
+grid += '</div></div>\n'
+assert 'sysp-grid' in grid and 'for-publicbd' in partners and 'Brief_Bangladesh.pdf' in partners
 assert 'href="initiative.html' not in bd_block
+
 
 # ---------- helpers ----------
 def secnav(current):
@@ -117,29 +124,59 @@ def page(path, title, desc, og_title, body, current):
     print('wrote', path, len(out))
 
 
-H3 = 'style="margin:30px 0 14px;font-size:1.35rem;font-weight:600;scroll-margin-top:90px"'
 P = 'style="margin:0 0 14px;font-size:15px;line-height:1.6;max-width:66ch"'
+LINK = 'style="color:var(--coral);text-decoration:none;border-bottom:1px solid rgba(242,109,90,.45)"'
+
+# Shared block: the four steps, in the roadmap's own gsteps style.
+STEPS = '''<ol class="gsteps bdsteps">
+<li><span class="mono">01 &middot; Find</span><p>Everyone who was told to get a test and has no result recorded.</p></li>
+<li><span class="mono">02 &middot; Rank</span><p>Days overdue, days since a positive result, prior no-shows. Three rules, no model.</p></li>
+<li><span class="mono">03 &middot; Act</span><p>A call in the patient&rsquo;s language, a kit, a booking, help with transport.</p></li>
+<li><span class="mono">04 &middot; Close</span><p>The test is done, and the days from referral to result are counted.</p></li>
+</ol>'''
+
+# Extra CSS for the edition (small; everything else comes from the main site's sheets).
+BD_CSS = '''<style id="bd">
+.bdgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.bdsteps{list-style:none;margin:0 0 14px;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.bdsteps li{border-top:2px solid var(--heading);padding-top:10px}
+.bdsteps .mono{display:block;font-size:10.5px;color:var(--pai-coral-text);margin-bottom:5px}
+.bdsteps p{margin:0;font-size:14px;line-height:1.5}
+.bdpat{margin:0 0 22px;background:var(--panel);border-radius:8px;padding:12px 14px;font-size:14px;line-height:1.5;color:var(--heading)}
+.bdpat .mono{display:block;font-size:10px;color:var(--muted);margin-bottom:4px}
+.bdstat{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-self:start}
+.bdstat>div{border:1px solid var(--pai-line);border-radius:10px;padding:18px 20px;background:#fff}
+.bdstat .n{font-family:var(--font-mono);font-size:1.6rem;color:var(--heading);margin-bottom:4px}
+.bdstat p{margin:0;font-size:13.5px;line-height:1.5;color:var(--ink)}
+.bdstat .st{margin-top:10px}
+.bdmeta{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
+.bdcard p.d{margin:0 0 10px}
+.bdtwo{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:36px;align-items:start}
+.bdnote{margin:0 0 14px;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+@media(max-width:760px){.bdgrid,.bdstat,.bdtwo{grid-template-columns:1fr}.bdsteps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:480px){.bdsteps{grid-template-columns:1fr}}
+</style>'''
 
 # ---------- index.html ----------
 articles = [
-    ('The Daily Star · Commentary', 'Increasing public health investment must be a top priority',
+    ('The Daily Star', 'Commentary', '19 Feb 2026', '4 min', 'Increasing public health investment must be a top priority',
      'Why health financing is economic protection, not a residual cost line.',
      'articles/increasing-public-health-investment/increasing-public-health-investment.html'),
-    ('The Daily Star · Commentary', 'Can we use private healthcare to improve health literacy?',
+    ('The Daily Star', 'Commentary', '12 Mar 2026', '5 min', 'Can we use private healthcare to improve health literacy?',
      'When patients cannot read the system, costs rise for everyone.',
      'articles/private-healthcare-health-literacy/private-healthcare-health-literacy.html'),
-    ('HSREP · Special report', 'When the Ground Shakes, Neighbors Respond First',
+    ('HSREP', 'Special report', '1 Mar 2026', '9 min', 'When the Ground Shakes, Neighbors Respond First',
      'Community preparedness as Dhaka&rsquo;s most affordable defense against a catastrophic earthquake.',
      'articles/when-the-ground-shakes/when-the-ground-shakes.html'),
-    ('The Daily Star · Earlier piece, 2025', 'We need public health reform for steady economic growth',
+    ('The Daily Star', 'Earlier piece', '6 Feb 2025', '4 min', 'We need public health reform for steady economic growth',
      'The earliest foundation piece connecting reform to growth.',
      'articles/public-health-reform-for-economic-growth/public-health-reform-for-economic-growth.html'),
 ]
 cards = ''.join(
-    '<div class="gcard"><div class="n">%s</div><h3>%s</h3><p>%s</p><p style="margin-top:10px"><a href="%s/%s" style="color:var(--coral);text-decoration:none;border-bottom:1px solid rgba(242,109,90,.45)">Read on hsraep.org &rarr;</a></p></div>'
-    % (lab, t, d, MAIN, href) for lab, t, d, href in articles)
+    '<div class="gcard bdcard"><p class="bdmeta">%s &middot; %s &middot; %s &middot; %s read</p><h3>%s</h3><p class="d">%s</p><p><a href="%s/%s" %s>Read on hsraep.org &rarr;</a></p></div>'
+    % (pub, kind, date, mins, t, d, MAIN, href, LINK) for pub, kind, date, mins, t, d, href in articles)
 
-index_body = f'''
+index_body = f'''{BD_CSS}
 <section class="pai-hero"><div class="wrap">
 <div class="copy">
 <span class="pai-chip" style="align-self:flex-start">Bangladesh edition</span>
@@ -147,38 +184,54 @@ index_body = f'''
 <p class="dek">HSREP is an independent public-health research and advocacy platform, founded in Michigan by Md Shafaat Ali Choyon, MBA, MCIM, MPH, CHES&reg;. Its first season examined health systems in the United States and Bangladesh. This edition collects the Bangladesh side: the Season 1 pieces written for readers here, and what the Prevention Adoption Initiative could look like in Bangladesh once its first pilot has been evaluated.</p>
 <div class="pai-cta"><a class="btn pai-primary" href="initiative.html">Where the routine could run here <span class="ar">&rarr;</span></a><a class="btn pai-secondary" href="{MAIN}/">The main site <span class="ar">&rarr;</span></a></div>
 </div>
-<div class="pai-legend" aria-label="What this edition is">
-<div><span class="st prop">Published</span>Four Season 1 pieces on Bangladesh, three of them in The Daily Star</div>
-<div><span class="st fut">Future possibility</span>A Bangladesh adaptation of the initiative, with no partner, date or funding yet</div>
-<div><span class="st req">One HSREP</span>Not a separate body; the same HSREP, with a .bd address for readers and institutions here</div>
+<div class="bdstat" aria-label="This edition in numbers">
+<div><div class="n">4</div><p>Season 1 pieces on Bangladesh, three of them in The Daily Star.</p></div>
+<div><div class="n">1</div><p>Initiative that could later run here, after its Michigan pilot.</p><span class="st fut">Future possibility</span></div>
 </div>
 </div></section>
 
-<div class="wrap" style="padding:36px 0 56px">
-<h2 id="season-1" style="font-size:1.6rem;margin:0 0 6px">Season 1, the Bangladesh pieces</h2>
-<p {P}>Season 1 was one argument told across nine pieces in two countries: that health protection is economic infrastructure, not a residual budget line. These are the four about Bangladesh. The full season, its engagement record and its methodology are on the main site.</p>
-<style>.bdgrid{{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:700px){{.bdgrid{{grid-template-columns:1fr}}}}</style>
+<div class="wrap" style="padding:8px 0 56px">
+<section class="pai-card" id="season-1" aria-labelledby="s1h">
+<span class="mono">01 &middot; Season 1</span>
+<h2 id="s1h">The Bangladesh pieces.</h2>
+<p class="lede">Season 1 was one argument told across nine pieces in two countries: that health protection is economic infrastructure, not a residual budget line. These are the four about Bangladesh.</p>
 <div class="grid3 bdgrid">{cards}</div>
-<p style="margin:14px 0 0;font-size:13px;color:var(--muted)"><a href="{MAIN}/season-1.html" style="color:inherit">Season 1 record</a> &middot; <a href="{MAIN}/methodology.html" style="color:inherit">Methods and sources</a></p>
+<p style="margin:18px 0 0;font-size:13.5px;color:var(--muted)">The full season, its engagement record and its methods are on the main site: <a href="{MAIN}/season-1.html" style="color:inherit">Season 1 record</a> &middot; <a href="{MAIN}/methodology.html" style="color:inherit">Methods and sources</a>.</p>
+</section>
 
-<h2 id="initiative" {H3.replace('1.35rem','1.6rem').replace('30px 0 14px','44px 0 6px')}>The Prevention Adoption Initiative, and Bangladesh</h2>
-<p {P}>The initiative is a weekly routine for recommended care that people start and do not finish: find who is overdue, rank by urgency, act with a call or a kit or a ride, and close the loop when the test is done. Its first pilot is proposed for one health center in Michigan, on colorectal cancer screening. That pilot has no host clinic yet.</p>
-<p {P}>Bangladesh is where I have standing and screening-service experience, and the national cervical and breast screening program has published its own follow-up gap. So it is the natural second setting, after the first pilot has been evaluated and not before. The page on <a href="initiative.html">where the routine could run here</a> keeps that plan in one place, with the organisations that could matter named as prospective and none of them confirmed.</p>
-<p class="pai-small" style="margin-top:6px">An HSREP initiative in development. No Bangladesh partner, site or funding is confirmed.</p>
+<section class="pai-card" id="initiative" aria-labelledby="inh">
+<span class="mono">02 &middot; The initiative</span>
+<h2 id="inh">Finish the tests people already start.</h2>
+<p class="lede">The Prevention Adoption Initiative is a weekly routine for recommended care that people begin and do not complete. Four steps, run by a clinic&rsquo;s own staff.</p>
+{STEPS}
+<div class="bdtwo" style="margin-top:22px">
+<div>
+<p {P}>The first pilot is proposed for one health center in Michigan, on colorectal cancer screening, including the colonoscopy after a positive test. It has no host clinic yet. Bangladesh is where I have standing and screening-service experience, and the national cervical and breast screening program has published its own follow-up gap, so it is the natural second setting, after that pilot has been evaluated and not before.</p>
+<p class="pai-small" style="margin:0">An HSREP initiative in development. No Bangladesh partner, site or funding is confirmed.</p>
+</div>
+<div class="pai-close" style="margin:0;padding:22px 24px"><p><b>Where the routine could run here.</b><br>The national program, private networks, and the organisations that could matter, named as prospective.</p><a class="btn pai-primary" href="initiative.html">Read the page <span class="ar">&rarr;</span></a></div>
+</div>
+</section>
 
-<h2 id="about" {H3.replace('1.35rem','1.6rem').replace('30px 0 14px','44px 0 6px')}>Why a .bd address</h2>
-<p {P}>So that readers, journalists and institutions in Bangladesh have an address that is theirs, and so that the Bangladesh work has a home that does not sit inside the page describing the Michigan pilot. Everything else, the articles, the engagement data, the corrections log, the editorial standards, lives on <a href="{MAIN}/">hsraep.org</a> and is not duplicated here.</p>
-<p {P}>Write to <a href="mailto:contact@hsraep.org">contact@hsraep.org</a>. For the initiative, <a href="https://calendly.com/shafaat-alic/30min">book thirty minutes</a>.</p>
+<section class="pai-card" id="about" aria-labelledby="abh">
+<span class="mono">03 &middot; This edition</span>
+<h2 id="abh">Why a .bd address.</h2>
+<p class="lede">So that readers, journalists and institutions in Bangladesh have an address that is theirs, and so that the Bangladesh work has a home that does not sit inside the page describing the Michigan pilot.</p>
+<div class="bdtwo">
+<div><p {P}>Everything else, the articles, the engagement data, the corrections log, the editorial standards, lives on <a href="{MAIN}/" {LINK}>hsraep.org</a> and is not duplicated here. This is the same HSREP, not a separate body.</p></div>
+<div><p {P}>Write to <a href="mailto:contact@hsraep.org" {LINK}>contact@hsraep.org</a>. For the initiative, <a href="https://calendly.com/shafaat-alic/30min" {LINK}>book thirty minutes</a>.</p></div>
+</div>
+</section>
 </div>
 '''
 
 # ---------- initiative.html ----------
-init_body = f'''
+init_body = f'''{BD_CSS}
 <section class="pai-hero"><div class="wrap">
 <div class="copy">
 <span class="pai-chip" style="align-self:flex-start">Future direction &middot; not part of the first pilot</span>
 <h1>Finish the tests people already start.</h1>
-<p class="dek">The Prevention Adoption Initiative is a weekly routine, Find, Rank, Act, Close, for recommended care that people begin and do not complete. Its first pilot is proposed for one Michigan health center, on colorectal cancer screening. This page is about what the same routine could look like in Bangladesh, after that pilot has been evaluated. Nothing here has a partner, a date or funding.</p>
+<p class="dek">The Prevention Adoption Initiative is a weekly routine for recommended care that people begin and do not complete. Its first pilot is proposed for one Michigan health center, on colorectal cancer screening. This page is about what the same routine could look like in Bangladesh, after that pilot has been evaluated. Nothing here has a partner, a date or funding.</p>
 <div class="pai-cta"><a class="btn pai-primary" href="{MAIN}/initiative.html">The first pilot, on the main site <span class="ar">&rarr;</span></a><a class="btn pai-secondary" href="index.html">Back to the edition <span class="ar">&rarr;</span></a></div>
 </div>
 <div class="pai-legend" aria-label="Status labels used on this page">
@@ -188,14 +241,26 @@ init_body = f'''
 </div>
 </div></section>
 
-<div class="wrap" style="padding:36px 0 56px">
-<div class="cview"><div><span class="mono">Where it could run</span><p>Community clinics under the national cervical and breast screening program, and private diagnostic networks.</p></div><div><span class="mono">Status</span><p><b style="color:var(--heading)">A future direction, in development.</b></p></div></div>
-{bd_block}
-<p class="pai-caveat">Experience in one setting does not show that the routine will work in another. Bangladesh is where I already have standing and screening-service experience; that is a reason to start here one day, not evidence that it would work here. The first pilot, its evaluation and its published toolkit come first.</p>
-</div>
+<div class="wrap" style="padding:8px 0 56px">
+<section class="pai-card" id="routine" aria-labelledby="rth">
+<span class="mono">01 &middot; The routine</span>
+<h2 id="rth">Four steps, every week, the same in any system.</h2>
+<p class="lede">The clinic&rsquo;s own staff run it. HSREP keeps the list and the rules. An independent evaluator judges the result.</p>
+{STEPS}
+<p class="gpat bdpat"><span class="mono">Invented patient &middot; what one row looks like here</span>Rina B. &middot; VIA-positive at a community clinic &middot; 70 days, no colposcopy &rarr; called in Bangla, booked at the upazila health complex, reminder two days before, transport arranged.</p>
+{grid}
+</section>
 
-<div class="wrap" style="padding-bottom:56px">
-<div class="pai-close"><p><b>All of this depends on the first pilot.</b><br>If your organisation wants to talk about a Bangladesh adaptation, that is the conversation to have, after the Michigan pilot has a host.</p><a class="btn pai-primary" href="https://calendly.com/shafaat-alic/30min">Book 30 min <span class="ar">&rarr;</span></a></div>
+<section class="pai-card" id="partners" aria-labelledby="pth">
+<span class="mono">02 &middot; Who could matter</span>
+<h2 id="pth">Different partners, different value, same routine.</h2>
+<p class="lede">Organisations named here are prospective. None is a confirmed partner, and none has been approached on behalf of this page.</p>
+{partners}
+</section>
+
+<p class="pai-caveat">Experience in one setting does not show that the routine will work in another. Bangladesh is where I already have standing and screening-service experience; that is a reason to start here one day, not evidence that it would work here. The first pilot, its evaluation and its published toolkit come first.</p>
+
+<div class="pai-close" style="margin-top:28px"><p><b>All of this depends on the first pilot.</b><br>If your organisation wants to talk about a Bangladesh adaptation, that is the conversation to have, after the Michigan pilot has a host.</p><a class="btn pai-primary" href="https://calendly.com/shafaat-alic/30min">Book 30 min <span class="ar">&rarr;</span></a></div>
 <p class="pai-small">An HSREP initiative in development. Everything on this page is future direction and illustrative; no patient data has been collected.</p>
 </div>
 '''
