@@ -58,9 +58,9 @@ stats = [
     ('6 in 100', 'factory workers screened by VIA had an abnormal result; about half were treated on site, the rest referred, with nothing published on what happened next (Jhpiego, 2026).'),
 ]
 cards = [
-    ('A &middot; Start here', 'The referral tail of factory screening', 'The provider&rsquo;s nurse follows the referred women to the public colposcopy clinic. Paid by the sponsor that already funds the screening: a brand programme, UNFPA, or the factory as a corporate client. Measure: referred women reaching colposcopy within 90 days, against 40.4%.'),
+    ('A &middot; Start here', 'The referral tail of factory screening', 'The provider&rsquo;s nurse follows the referred women to the public colposcopy clinic. Paid by the sponsor that already funds the screening, for example a brand programme, UNFPA, or the factory as a corporate client. Measure: referred women reaching colposcopy within 90 days, against 40.4%.'),
     ('B &middot; Alongside', 'A completion contract on corporate check-ups', 'The network follows every abnormal result from its own employer check-ups to the next step in-house: high blood pressure (21% of adults), HbA1c over the line (13%), abnormal creatinine (about 22%). One transparent price, no per-referral payment. It pays, and sells employers completion instead of a check-up. Measure: abnormal results reaching their next step, per employer.'),
-    ('C &middot; At scale', 'A follow-up cell inside the national programme', 'Two or three upazilas use the registry&rsquo;s own list and add a phone call, a booked slot, the fare, and the result written back. Funded from programme money already committed for 2027&ndash;2031. Measure: the national 40.4% in those upazilas, a year later.'),
+    ('C &middot; At scale', 'A follow-up cell inside the national programme', 'Two or three upazilas use the registry&rsquo;s own list and add a phone call, a booked slot, the fare, and the result written back. It could be funded from programme money already committed for 2027&ndash;2031; none of it is agreed for this. Measure: the national 40.4% in those upazilas, a year later.'),
 ]
 matrix = [
     ('Private provider', 'Its nurse, two hours a week', 'Referred cases by contract where private; a per-completion fee; a completion rate to sell'),
@@ -68,7 +68,7 @@ matrix = [
     ('Sponsor', 'Screening it already funds; a small fee per completion; the fare', 'A completion rate per factory instead of a screening count'),
     ('Public programme', 'Nothing new; the colposcopy clinics exist', 'Its 40.4% moving; results written back to the registry'),
     ('The woman', 'Nothing', 'Reaches the next step, morning paid, fare covered'),
-    ('HSREP', 'The worklist, the rules, the training; takes no fee', 'The first published completion number in Bangladesh'),
+    ('HSREP', 'The worklist, the rules, the training; the sponsor or provider pays for the founder&rsquo;s time, no fee on top', 'The first published completion number in Bangladesh'),
 ]
 
 rows = ''.join(f'<div class="row"><div class="k">{k}</div><div>{v}</div></div>' for k, v in pitch)

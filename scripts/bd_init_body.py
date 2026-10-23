@@ -113,7 +113,7 @@ def init_body(MAIN, STEPS, BD_CSS):
 <div class="wrap"><div class="bdpath" aria-label="How it moves">
 <span class="mono">How it moves &middot; every stage ends with its own number</span>
 <ol>
-<li><b>Michigan, one clinic</b><span>Three months of feasibility, then the clinic decides whether to go to month twelve. An independent evaluator, named in the agreement before the start, judges against the clinic&rsquo;s own trend.</span></li>
+<li><b>Michigan, one clinic</b><span>Three months of feasibility, then the clinic decides whether to go to month twelve. An independent evaluator, once one is confirmed, judges against the clinic&rsquo;s own trend; without one, the result is the clinic&rsquo;s own before-and-after.</span></li>
 <li><b>Bangladesh, one provider</b><span>Model A: one provider, one factory client, three months, then the same decision. The evaluator here is a university or research institute, named before the start (see 06).</span></li>
 <li><b>Then the programme</b><span>Model C goes to the national programme on model A&rsquo;s number, not before. Each stage is judged by the number it set out to move.</span></li>
 </ol>
@@ -157,7 +157,7 @@ def init_body(MAIN, STEPS, BD_CSS):
 <dt>The list</dt><dd>The provider&rsquo;s own register of referred women. The factory never sees a result.</dd>
 <dt>Who acts</dt><dd>The provider&rsquo;s outreach nurse, two hours a week. The factory doctor or welfare officer releases the right women on the right days.</dd>
 <dt>The test</dt><dd>Free at the public colposcopy clinic. Private only where the public clinic is far or slow, at a fixed price.</dd>
-<dt>Who pays</dt><dd>The sponsor that already pays for the screening: a brand programme, UNFPA, or the factory as a corporate client. A small fee per completed follow-up, plus the fare.</dd>
+<dt>Who pays</dt><dd>The sponsor that already pays for the screening, for example a brand programme, UNFPA, or the factory as a corporate client. A small fee per completed follow-up, plus the fare.</dd>
 </dl>
 <div class="m"><span class="mono">Measure</span>Share of referred women reaching colposcopy within 90 days, against the national 40.4%.</div>
 </article>
@@ -181,7 +181,7 @@ def init_body(MAIN, STEPS, BD_CSS):
 <dt>The list</dt><dd>Already in the DHIS2 tracker, with a national ID.</dd>
 <dt>Who acts</dt><dd>The community clinic&rsquo;s own provider: a phone call, a booked slot, the fare; colposcopy and histopathology written back.</dd>
 <dt>The test</dt><dd>Public, with contracted private capacity at a fixed price where the public clinic is overloaded.</dd>
-<dt>Who pays</dt><dd>The programme money already committed for 2027&ndash;2031: the EIB Women&rsquo;s Health Initiative, with UNFPA technical assistance.</dd>
+<dt>Who pays</dt><dd>It could come from programme money already committed for 2027&ndash;2031, the EIB Women&rsquo;s Health Initiative with UNFPA technical assistance. None of it is agreed for this.</dd>
 </dl>
 <div class="m"><span class="mono">Measure</span>The national 40.4% in those upazilas, a year later, and the share of treatments with histopathology on record.</div>
 </article>
@@ -215,7 +215,7 @@ def init_body(MAIN, STEPS, BD_CSS):
 <tr><td>Sponsor (brand, UNFPA or the factory as client)</td><td>The screening it already funds; a small fee per completed follow-up; the fare</td><td>A completion rate per factory instead of a screening count</td></tr>
 <tr><td>Public programme</td><td>Nothing new. The colposcopy clinics exist</td><td>Its 40.4% moving; results written back to the registry when the camp runs under the programme</td></tr>
 <tr><td>The woman</td><td>Nothing</td><td>Reaches the next step, with the morning paid and the fare covered</td></tr>
-<tr><td>HSREP</td><td>The worklist, the three rules, the training, the written routine. HSREP takes no fee; the sponsor or the provider contracts the founder</td><td>The first published completion number in Bangladesh, and the toolkit</td></tr>
+<tr><td>HSREP</td><td>The worklist, the three rules, the training, the written routine. The sponsor or the provider pays for the founder&rsquo;s time; HSREP adds no fee on top</td><td>The first published completion number in Bangladesh, and the toolkit</td></tr>
 </tbody>
 </table>
 </section>
