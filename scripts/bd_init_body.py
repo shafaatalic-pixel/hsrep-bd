@@ -1,6 +1,20 @@
 # New initiative.html body for hsrep.bd (spliced into build.py)
 
 BD_CSS2 = '''<style id="bd2">
+.bdside{display:flex;flex-direction:column;gap:14px;align-self:start;min-width:0}
+.bdlist{margin:0;border:1px solid var(--pai-line);border-radius:10px;background:#fff;padding:16px 18px 14px;box-shadow:var(--pai-shadow)}
+.bdlist figcaption{display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px 12px;margin-bottom:8px}
+.bdlist .mono{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.bdlist ol{list-style:none;margin:0;padding:0}
+.bdlist li{display:grid;grid-template-columns:24px minmax(0,1fr) auto;gap:12px;align-items:center;padding:10px 0;border-top:1px solid var(--pai-soft)}
+.bdlist .rk{font-family:var(--font-mono);font-size:12px;color:var(--heading);width:24px;height:24px;border-radius:50%;background:var(--pai-soft);display:grid;place-items:center}
+.bdlist .who b{display:block;font-size:14px;color:var(--heading)}
+.bdlist .who small{display:block;font-size:12.5px;line-height:1.4;color:var(--muted)}
+.bdlist .st{font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--pai-coral-wash);color:var(--pai-coral-text);white-space:nowrap}
+.bdlist .st.done{background:var(--pai-green-wash);color:var(--pai-green)}
+.bdlist .foot{margin:10px 0 0;padding-top:10px;border-top:1px solid var(--pai-soft);font-size:12.5px;line-height:1.5;color:var(--muted)}
+@media(max-width:420px){.bdlist li{grid-template-columns:24px minmax(0,1fr)}.bdlist .st{grid-column:2;justify-self:start}}
+
 .bdfun{margin:8px 0 6px}
 .bdfun .row{display:grid;grid-template-columns:200px minmax(0,1fr) 120px;gap:14px;align-items:center;padding:9px 0;border-bottom:1px solid var(--pai-line)}
 .bdfun .row:last-child{border-bottom:0}
@@ -79,9 +93,20 @@ def init_body(MAIN, STEPS, BD_CSS):
 <p class="dek">Bangladesh&rsquo;s national programme screens millions of women and records every positive result. Then it loses most of them at the next step. The Prevention Adoption Initiative is a weekly routine for that step: find who is overdue, rank by urgency, act with a call and a booking and the fare, close when it is done. This page shows how it could run here, first on cancer screening and then on the chronic conditions a corporate check-up finds, who would do what, and who would pay. The design is published; the first pilot is in Michigan; this is the Bangladesh adaptation, ready for a first conversation.</p>
 <div class="pai-cta"><a class="btn pai-primary" href="https://calendly.com/shafaat-alic/30min">Talk to me, 30 minutes <span class="ar">&rarr;</span></a><a class="btn pai-secondary" href="assets/HSREP_Prevention_Adoption_Initiative_Brief_Bangladesh.pdf" download>The one-page brief (PDF) <span class="ar">&rarr;</span></a></div>
 </div>
+<div class="bdside">
 <div class="bdstat" aria-label="The gap in numbers">
 <div><div class="n">40.4%</div><p>of VIA-positive women reached colposcopy, 2018&ndash;2023. Six in ten did not.</p></div>
 <div><div class="n">32%</div><p>of newly diagnosed hypertension and diabetes patients at NCD corners did not return within three months.</p></div>
+</div>
+<figure class="bdlist" aria-label="What the weekly list looks like, with invented rows">
+<figcaption><span class="mono">This week&rsquo;s list &middot; invented rows</span><span class="mono">2 hours &middot; the provider&rsquo;s nurse</span></figcaption>
+<ol>
+<li><span class="rk">1</span><span class="who"><b>Rina B.</b><small>VIA-positive &middot; 70 days, no colposcopy</small></span><span class="st done">Done, day 76</span></li>
+<li><span class="rk">2</span><span class="who"><b>Nasima K.</b><small>VIA-positive &middot; 48 days &middot; missed one booking</small></span><span class="st">Booked, fare sent</span></li>
+<li><span class="rk">3</span><span class="who"><b>Shirin A.</b><small>VIA-positive &middot; 23 days</small></span><span class="st">Called in Bangla</span></li>
+</ol>
+<p class="foot">Ranked by days overdue, days since the positive result and prior no-shows. Three rules, no model. The factory never sees this list.</p>
+</figure>
 </div>
 </div></section>
 
