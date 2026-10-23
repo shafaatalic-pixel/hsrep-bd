@@ -70,26 +70,7 @@ old_tag = '<p>An independent public-health research and advocacy platform examin
 assert tail.count(old_tag) == 1
 tail = tail.replace(old_tag, old_tag[:-4] + ' This is the Bangladesh edition; the record of work is on <a href="%s/" style="color:inherit;display:inline">hsraep.org</a>.</p>' % MAIN)
 
-# ---------- the Bangladesh material from the original roadmap ----------
-a = ORIG.index('<div role="tabpanel" id="pan-bd" aria-labelledby="tab-bd" hidden>')
-b = ORIG.index('<p class="pai-caveat">Experience in one setting')
-bd_block = ORIG[a:b]
-bd_block = bd_block.split('\n', 1)[1]  # drop the tabpanel opener
-assert bd_block.rstrip().endswith('</div>')
-bd_block = bd_block.rstrip()[:-6].rstrip()  # drop the tabpanel closer
-# the cview "where it would run" row is restated in the hero; drop it
-bd_block = re.sub(r'^<div class="cview">.*?</div></div>\n', '', bd_block, count=1, flags=re.S)
-bd_block = bd_block.replace('href="initiative.html#host"', 'href="%s/initiative.html#host"' % MAIN)
-bd_block = bd_block.replace('href="initiative.html#pilot"', 'href="%s/initiative.html#pilot"' % MAIN)
-# the old h3 becomes a section header, so drop it and its prospective note (restated below)
-bd_block = re.sub(r'<h3 id="bangladesh"[^>]*>Different partners, different value, same routine</h3>\n', '', bd_block, count=1)
-bd_block = re.sub(r'<span class="mono" style="display:block;color:var\(--muted\);font-size:10px;margin-bottom:10px">Organizations named here are prospective\. None is a confirmed partner\.</span>\n', '', bd_block, count=1)
-# split: comparison grid | partner cards + role cards + brief
-grid, partners = bd_block.split('</div></div>\n', 1)
-grid += '</div></div>\n'
-assert 'sysp-grid' in grid and 'for-publicbd' in partners and 'Brief_Bangladesh.pdf' in partners
-assert 'href="initiative.html' not in bd_block
-
+# (the roadmap's old Bangladesh block is no longer used; the page is written from the strategy memo of 23 Oct 2026)
 
 # ---------- helpers ----------
 def secnav(current):
@@ -186,7 +167,7 @@ index_body = f'''{BD_CSS}
 </div>
 <div class="bdstat" aria-label="This edition in numbers">
 <div><div class="n">4</div><p>Season 1 pieces on Bangladesh, three of them in The Daily Star.</p></div>
-<div><div class="n">1</div><p>Initiative that could later run here, after its Michigan pilot.</p><span class="st fut">Future possibility</span></div>
+<div><div class="n">40.4%</div><p>of VIA-positive women reached colposcopy, 2018&ndash;2023. The step the initiative is about.</p><span class="st fut">Future possibility</span></div>
 </div>
 </div></section>
 
@@ -209,7 +190,7 @@ index_body = f'''{BD_CSS}
 <p {P}>The first pilot is proposed for one health center in Michigan, on colorectal cancer screening, including the colonoscopy after a positive test. It has no host clinic yet. Bangladesh is where I have standing and screening-service experience, and the national cervical and breast screening program has published its own follow-up gap, so it is the natural second setting, after that pilot has been evaluated and not before.</p>
 <p class="pai-small" style="margin:0">An HSREP initiative in development. No Bangladesh partner, site or funding is confirmed.</p>
 </div>
-<div class="pai-close" style="margin:0;padding:22px 24px"><p><b>Where the routine could run here.</b><br>The national program, private networks, and the organisations that could matter, named as prospective.</p><a class="btn pai-primary" href="initiative.html">Read the page <span class="ar">&rarr;</span></a></div>
+<div class="pai-close" style="margin:0;padding:22px 24px"><p><b>Where the routine could run here.</b><br>The gap in numbers, three ways to run it, who would do what and who would pay, in plain words.</p><a class="btn pai-primary" href="initiative.html">Read the page <span class="ar">&rarr;</span></a></div>
 </div>
 </section>
 
@@ -226,50 +207,15 @@ index_body = f'''{BD_CSS}
 '''
 
 # ---------- initiative.html ----------
-init_body = f'''{BD_CSS}
-<section class="pai-hero"><div class="wrap">
-<div class="copy">
-<span class="pai-chip" style="align-self:flex-start">Future direction &middot; not part of the first pilot</span>
-<h1>Finish the tests people already start.</h1>
-<p class="dek">The Prevention Adoption Initiative is a weekly routine for recommended care that people begin and do not complete. Its first pilot is proposed for one Michigan health center, on colorectal cancer screening. This page is about what the same routine could look like in Bangladesh, after that pilot has been evaluated. Nothing here has a partner, a date or funding.</p>
-<div class="pai-cta"><a class="btn pai-primary" href="{MAIN}/initiative.html">The first pilot, on the main site <span class="ar">&rarr;</span></a><a class="btn pai-secondary" href="index.html">Back to the edition <span class="ar">&rarr;</span></a></div>
-</div>
-<div class="pai-legend" aria-label="Status labels used on this page">
-<div><span class="st prop">Proposed</span>What the first pilot would do, in Michigan</div>
-<div><span class="st req">Requires evaluation</span>Only if that pilot passes its month-twelve evaluation</div>
-<div><span class="st fut">Future possibility</span>Everything on this page</div>
-</div>
-</div></section>
-
-<div class="wrap" style="padding:8px 0 56px">
-<section class="pai-card" id="routine" aria-labelledby="rth">
-<span class="mono">01 &middot; The routine</span>
-<h2 id="rth">Four steps, every week, the same in any system.</h2>
-<p class="lede">The clinic&rsquo;s own staff run it. HSREP keeps the list and the rules. An independent evaluator judges the result.</p>
-{STEPS}
-<p class="gpat bdpat"><span class="mono">Invented patient &middot; what one row looks like here</span>Rina B. &middot; VIA-positive at a community clinic &middot; 70 days, no colposcopy &rarr; called in Bangla, booked at the upazila health complex, reminder two days before, transport arranged.</p>
-{grid}
-</section>
-
-<section class="pai-card" id="partners" aria-labelledby="pth">
-<span class="mono">02 &middot; Who could matter</span>
-<h2 id="pth">Different partners, different value, same routine.</h2>
-<p class="lede">Organisations named here are prospective. None is a confirmed partner, and none has been approached on behalf of this page.</p>
-{partners}
-</section>
-
-<p class="pai-caveat">Experience in one setting does not show that the routine will work in another. Bangladesh is where I already have standing and screening-service experience; that is a reason to start here one day, not evidence that it would work here. The first pilot, its evaluation and its published toolkit come first.</p>
-
-<div class="pai-close" style="margin-top:28px"><p><b>All of this depends on the first pilot.</b><br>If your organisation wants to talk about a Bangladesh adaptation, that is the conversation to have, after the Michigan pilot has a host.</p><a class="btn pai-primary" href="https://calendly.com/shafaat-alic/30min">Book 30 min <span class="ar">&rarr;</span></a></div>
-<p class="pai-small">An HSREP initiative in development. Everything on this page is future direction and illustrative; no patient data has been collected.</p>
-</div>
-'''
+import sys; sys.path.insert(0, str(ROOT / 'scripts'))
+from bd_init_body import init_body as _init_body
+init_body = _init_body(MAIN, STEPS, BD_CSS)
 
 page('index.html', 'HSREP Bangladesh',
      'The Bangladesh edition of HSREP: the Season 1 pieces on Bangladesh, and where the Prevention Adoption Initiative could run after its first pilot.',
      'HSREP Bangladesh', index_body, 'index.html')
 page('initiative.html', 'Where the routine could run in Bangladesh - HSREP Bangladesh',
-     'What the Prevention Adoption Initiative could look like in Bangladesh after its first pilot: the national screening program, private networks, and the organisations that could matter. None is confirmed.',
+     'Six in ten VIA-positive women never reach colposcopy. How a weekly follow-up routine could run in Bangladesh after its first pilot: who would do what, who would pay, and why each party would say yes. Nothing is confirmed.',
      'Where the Prevention Adoption Initiative could run in Bangladesh', init_body, 'initiative.html')
 
 (ROOT / 'robots.txt').write_text('User-agent: *\nAllow: /\nSitemap: %s/sitemap.xml\n' % BD)
