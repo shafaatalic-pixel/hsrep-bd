@@ -59,7 +59,7 @@ stats = [
 ]
 cards = [
     ('A &middot; Start here', 'The referral tail of factory screening', 'The provider&rsquo;s nurse follows the referred women to the public colposcopy clinic. Paid by the sponsor that already funds the screening, for example a brand programme, UNFPA, or the factory as a corporate client. Measure: referred women reaching colposcopy within 90 days, against 40.4%.'),
-    ('B &middot; Alongside', 'A completion contract on corporate check-ups', 'The network follows every abnormal result from its own employer check-ups to the next step in-house: high blood pressure (21% of adults), HbA1c over the line (13%), abnormal creatinine (about 22%). One transparent price, no per-referral payment. It pays, and sells employers completion instead of a check-up. Measure: abnormal results reaching their next step, per employer.'),
+    ('B &middot; Alongside', 'A completion contract on corporate check-ups', 'The network follows every abnormal result from its own employer check-ups to the next step in-house: high blood pressure (21% of adults), diabetes (13% of adults), abnormal creatinine (about 22%). One transparent price, no per-referral payment. It pays, and sells employers completion instead of a check-up. Measure: abnormal results reaching their next step, per employer.'),
     ('C &middot; At scale', 'A follow-up cell inside the national programme', 'Two or three upazilas use the registry&rsquo;s own list and add a phone call, a booked slot, the fare, and the result written back. It could be funded from programme money already committed for 2027&ndash;2031; none of it is agreed for this. Measure: the national 40.4% in those upazilas, a year later.'),
 ]
 matrix = [
