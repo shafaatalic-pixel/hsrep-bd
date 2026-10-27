@@ -75,7 +75,7 @@ assert '%%SECNAV%%' in header and 'hs-ask' not in header
 tail = relativize(absolutize(tail))
 # the main site's footer links here; on this site that link would point at itself
 tail = tail.replace('<a href="https://hsrep.bd" target="_blank" rel="noopener">HSREP Bangladesh &#8599;</a>', '')
-old_tag = '<p>An independent public-health research and advocacy platform examining health-system resilience as economic protection infrastructure.</p>'
+old_tag = '<p>An independent public-health research, advocacy and implementation platform examining health-system resilience as economic protection infrastructure.</p>'
 assert tail.count(old_tag) == 1
 tail = tail.replace(old_tag, old_tag[:-4] + ' This is the Bangladesh edition; the record of work is on <a href="%s/" style="color:inherit;display:inline">hsraep.org</a>.</p>' % MAIN)
 
@@ -178,7 +178,7 @@ index_body = f'''{BD_CSS}
 <div class="copy">
 <span class="pai-chip" style="align-self:flex-start">Bangladesh edition</span>
 <h1>HSREP in Bangladesh.</h1>
-<p class="dek">HSREP is an independent public-health research and advocacy platform, founded in Michigan by Md Shafaat Ali Choyon, MBA, MCIM, MPH, CHES&reg;. Its first season examined health systems in the United States and Bangladesh. This edition collects the Bangladesh side: the Season 1 pieces written for readers here, and what the Prevention Adoption Initiative could look like in Bangladesh after its first pilot in Michigan.</p>
+<p class="dek">HSREP is an independent public-health research, advocacy and implementation platform, founded in Michigan by Md Shafaat Ali Choyon, MBA, MCIM, MPH, CHES&reg;. Its first season examined health systems in the United States and Bangladesh. This edition collects the Bangladesh side: the Season 1 pieces written for readers here, and what the Prevention Adoption Initiative could look like in Bangladesh after its first pilot in Michigan.</p>
 <div class="pai-cta"><a class="btn pai-primary" href="initiative.html">Where the routine could run here <span class="ar">&rarr;</span></a><a class="btn pai-secondary" href="{MAIN}/">The main site <span class="ar">&rarr;</span></a></div>
 </div>
 <nav class="bdtoc" aria-label="On this page">
