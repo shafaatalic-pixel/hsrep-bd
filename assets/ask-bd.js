@@ -48,6 +48,9 @@
       'কোন দীর্ঘমেয়াদি রোগ দিয়ে শুরু করবেন?',
       'আপনার অভিজ্ঞতা কী?']],
   ];
+  var URLP = (function () { try { return new URLSearchParams(location.search); } catch (e) { return { get: function () { return null; } }; } })();
+  var VIA = String(URLP.get('utm_source') || URLP.get('ref') || '').toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 16);
+  if (!window.AskFB) { var fbs = document.createElement('script'); fbs.src = '/assets/ask-feedback.js?v=20261030a'; fbs.defer = true; document.head.appendChild(fbs); }
   var CSS = '\
 #ask-launch{position:fixed;right:18px;bottom:18px;z-index:4000;display:flex;align-items:center;gap:10px;padding:8px 16px 8px 8px;border:0;border-radius:999px;background:#0F2036;color:#fff;font:600 14px/1 Inter,"Inter Fallback",system-ui,sans-serif;box-shadow:0 10px 28px rgba(15,32,54,.35);cursor:pointer}\
 #ask-launch img{width:38px;height:38px;border-radius:50%;object-fit:cover;object-position:50% 20%;display:block}\
@@ -136,7 +139,7 @@ html.ask-on #ask-scrim{opacity:1;pointer-events:auto}\
     '<div class="ask-body" id="ask-body"><div id="ask-rest"></div><div class="ask-paths" id="ask-paths" role="group" aria-label="Who are you?"></div><div class="ask-sugg" id="ask-sugg"></div><div id="ask-chat" aria-live="polite"></div></div>' +
     '<form class="ask-form" id="ask-form"><textarea id="ask-q" rows="1" maxlength="600" placeholder="Ask in English or Bangla" aria-label="Your question"></textarea><button type="submit" id="ask-send">Ask</button></form>' +
     '<div id="ask-ts"></div>' +
-    '<div class="ask-meta"><span id="ask-left">Up to 8 questions per visit.</span><span><a href="https://hsraep.org/privacy.html#ai" target="_blank" rel="noopener">How questions are handled</a></span></div>';
+    '<div class="ask-meta"><span id="ask-left">Up to 8 questions per visit.</span><span>Questions are stored without names to improve the service and for research. <a href="https://hsraep.org/privacy.html#ai" target="_blank" rel="noopener">How questions are handled</a></span></div>';
   document.body.appendChild(launch); document.body.appendChild(scrim); document.body.appendChild(panel);
 
   var chat = panel.querySelector('#ask-chat'), form = panel.querySelector('#ask-form'), q = panel.querySelector('#ask-q'), send = panel.querySelector('#ask-send'),
@@ -239,7 +242,7 @@ html.ask-on #ask-scrim{opacity:1;pointer-events:auto}\
   function req(retry) {
     freshSession(); if (!session) loadTs();
     return (session ? Promise.resolve(null) : getTs()).then(function (tok) {
-      return fetch(CFG.api + '/ask', { method: 'POST', headers: { 'content-type': 'application/json' }, credentials: 'omit', body: JSON.stringify({ messages: hist.slice(-8), session: session, turnstile: tok, ind: path, from: CFG.from }) });
+      return fetch(CFG.api + '/ask', { method: 'POST', headers: { 'content-type': 'application/json' }, credentials: 'omit', body: JSON.stringify({ messages: hist.slice(-8), session: session, turnstile: tok, ind: path, from: CFG.from, chip: VIA ? 'via-' + VIA : '' }) });
     }).then(function (r) { return r.json().then(function (j) { j.__s = r.status; return j; }); })
       .then(function (j) { if (j && j.needTurnstile && !retry) { dropSession(); return req(true); } return j; });
   }
@@ -268,6 +271,7 @@ html.ask-on #ask-scrim{opacity:1;pointer-events:auto}\
         if (/\.pdf/.test(j.reply || '')) acts.push('<a href="' + BRIEF + '">Open the one-page brief</a>');
         if (acts.length) html += '<div class="ask-actions">' + acts.join('') + '</div>';
         var d = bot(html, ((j.reply || '').match(/[\u0980-\u09FF]/g) || []).length > 20); pose('talking'); setTimeout(function () { pose('greet'); }, Math.min(9000, 1200 + (j.reply || '').length * 12));
+        if (window.AskFB) window.AskFB.attach(d.querySelector('.bub') || d, { api: CFG.api, key: 'hsbd_ask', session: function () { return session; }, turn: turns, from: CFG.from, ind: function () { return path; }, track: t });
         t('ask_reply', { seconds: Math.round((Date.now() - t0) / 1000), step: turns, guarded: j.guarded ? 1 : 0, path: path });
         busy = false; send.disabled = false; setLeft(); sugg.style.display = ''; if (turns < CFG.max) q.focus();
       })
@@ -288,5 +292,5 @@ html.ask-on #ask-scrim{opacity:1;pointer-events:auto}\
   scrim.addEventListener('click', close);
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && document.documentElement.classList.contains('ask-on')) close(); });
   document.addEventListener('click', function (e) { var a = e.target.closest && e.target.closest('[data-ask-open]'); if (a) { e.preventDefault(); open(); } });
-  if (location.hash === '#ask') setTimeout(open, 400);
+  if (location.hash === '#ask' || URLP.get('ask') === '1') setTimeout(function () { open(); var pq = URLP.get('q'); if (pq) { q.value = String(pq).slice(0, 600); q.dispatchEvent(new Event('input')); } }, 400);
 })();
