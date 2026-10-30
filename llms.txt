@@ -1,0 +1,18 @@
+# HSREP Bangladesh
+
+> The Bangladesh edition of HSREP (Health System Resilience & Economic Protection), an independent public-health research, advocacy and implementation platform working across the United States and Bangladesh. It argues that health protection is economic infrastructure. Founded 2026 by Md Shafaat Ali Choyon (MBA, MCIM, MPH, CHES®). Nothing on these pages is a confirmed partnership or programme.
+
+## Pages
+
+- [HSREP in Bangladesh](https://hsrep.bd/): the Season 1 pieces on Bangladesh, where new health money should go first (with sources), and where the Prevention Adoption Initiative could run after its first pilot.
+- [Where the routine could run in Bangladesh](https://hsrep.bd/initiative.html): six in ten VIA-positive women never reach colposcopy. How a weekly follow-up routine could run in Bangladesh after its first pilot: who would do what, who would pay, and why each party would say yes. Nothing is confirmed.
+
+## Ask
+
+- Ask me about the Bangladesh plan: an AI version of the founder that answers in English or Bangla from these two pages, a note on the Michigan pilot and the founder's published record. Labelled as AI; questions are stored without names to improve the service and for research (https://hsraep.org/privacy.html#ai). Open it with a question: https://hsrep.bd/?ask=1&q=<question>
+
+## Related
+
+- [HSREP](https://hsraep.org/): the main platform, Season 1, articles, methodology and corrections.
+- [Prevention Adoption Initiative](https://hsraep.org/initiative.html): the proposed first pilot, in Michigan.
+- [Founder](https://shafaatalichoyon.com/): Md Shafaat Ali Choyon.
